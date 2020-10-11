@@ -1,24 +1,25 @@
 const express = require("express");
-
 //creating Router Class
 
 class NoteRouter {
-  constructor(takeinobject) {
+  constructor(takeinobject) {// so that we can use other class methods
     this.takeinobject=takeinobject;
   }
   router() {
     const router = express.Router();
-    router.get("/",this.samget.bind(this));
+    router.get("/",this.samget.bind(this)); //(req,res)=>{res.send()}//
     router.post("/",this.sampost.bind(this));
     return router;
   }
+
 samget(req,res){
     console.log("samGet works");
-     res.send(this.takeinobject.read());
+     res.send(this.takeinobject.read());// means nothing without binding
 }
 
 sampost(req,res){
 console.log("samPost works");
+
 res.send(this.takeinobject.write());
 }
 
